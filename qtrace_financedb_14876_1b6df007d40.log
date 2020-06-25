@@ -1,0 +1,85 @@
+SESSION BEGINS:1593075680/26476300:(VER=20)(DBID=120035472)(skelam)()()(SVRCL=INGRES)(financedb)(00000000:00000000)(10114)
+NOTE:Tracing started at Thu Jun 25 14:31:20 2020 by session start, nodetail, mintime=0, only-errors? no
+X100CONN:1593075680/31455000:(FFFFFFFFDF007D40,10114):95
+X100Q:1593075680/32453900:sys(getconf, [system, force_partitions])
+X100Q:1593075680/32453901:sys(getconf, [system, force_partition_key])
+QRY:1593075680/33453600?select dbmsinfo('_version'), dbmsinfo('username'), VARCHAR(dbmsinfo('unicode_level'), 1), tinyint(dbmsinfo('autocommit_state'))
+X100Q:1593075680/33453601:commit(true)
+X100Q:1593075680/34489801:sys(get_transaction_id)
+EQY:1593075680/34489802:1::0:(2:0):0:1
+QRY:1593075680/35453305?select cap_capability, cap_value from iidbcapabilities 
+EQY:1593075680/35453307:42::0:(2:0):0:1
+QRY:1593075680/36454505?select table_owner, table_name from iitables where table_name = 'ii+odbc'
+EQY:1593075680/37490400:0::15:(2:0):0:1
+COMMIT:1593075680/38493700:
+X100Q:1593075680/38493701:commit(true)
+EQY:1593075680/38493702:-1::15:(2:0):0:0
+QRY:1593075680/39455302?set autocommit on
+X100Q:1593075680/39455303:commit(true)
+AUTOCOMMIT:1593075680/40496000:On
+EQY:1593075680/40496001:-1::15:(2:0):0:0
+QRY:1593075680/41453700?select top 1000001
+    "date",
+    sum(     float8("sales")               ) as "C1",
+    count("sales") as "C2",
+    sum(     float8("sales")               ) as "C3"
+from "skelam"."finance"
+group by "date"
+X100Q:1593075680/41453701:commit(true)
+X100Q:1593075680/42454700:Window (Project (Aggr (MScan ( '_skelamSfinance', [ _t0_c13_date = '_date', _t0_c10_sales = '_sales']  ) [ 'est_card' = '700' ] , [_s1_r1_ = _t0_c13_date] , [_s1_r2_ = sum(_t0_c10_sales), _s1_r3_ = count(_t0_c10_sales)] , 16), [_main_r1_ = _s1_r1_, _main_r2_ = _s1_r2_, _main_r3_ = _s1_r3_, _main_r4_ = _s1_r2_] ), [0, 1000001])
+X100Q:1593075680/43491600:commit(true)
+EQY:1593075680/43491601:16::15:(2:0):0:0
+QRY:1593075725/143218500?select top 1000001
+    "date",
+    sum(     float8("sales")               ) as "C1",
+    count("sales") as "C2",
+    sum(     float8("sales")               ) as "C3"
+from "skelam"."finance"
+group by "date"
+X100Q:1593075725/143218501:commit(true)
+X100Q:1593075725/144217001:Window (Project (Aggr (MScan ( '_skelamSfinance', [ _t0_c13_date = '_date', _t0_c10_sales = '_sales']  ) [ 'est_card' = '700' ] , [_s1_r1_ = _t0_c13_date] , [_s1_r2_ = sum(_t0_c10_sales), _s1_r3_ = count(_t0_c10_sales)] , 16), [_main_r1_ = _s1_r1_, _main_r2_ = _s1_r2_, _main_r3_ = _s1_r3_, _main_r4_ = _s1_r2_] ), [0, 1000001])
+X100Q:1593075725/146217000:commit(true)
+EQY:1593075725/146217001:16::15:(2:0):0:0
+QRY:1593075865/670556700?set autocommit off
+X100Q:1593075865/670556701:commit(true)
+AUTOCOMMIT:1593075865/670556702:Off
+EQY:1593075865/670556703:-1::15:(2:0):0:0
+NOTE:Tracing stopped by session exit
+SESSION ENDS:1593075865/671508306:(skelam)(financedb)(10114)
+SESSION BEGINS:1593077183/944233000:(VER=20)(DBID=120035472)(skelam)()()(SVRCL=INGRES)(financedb)(00000000:00000000)(10242)
+NOTE:Tracing started at Thu Jun 25 14:56:23 2020 by session start, nodetail, mintime=0, only-errors? no
+X100CONN:1593077183/948261100:(FFFFFFFFDF007D40,10242):99
+X100Q:1593077183/949231600:sys(getconf, [system, force_partitions])
+X100Q:1593077183/949231601:sys(getconf, [system, force_partition_key])
+QRY:1593077183/951232900?select dbmsinfo('_version'), dbmsinfo('username'), VARCHAR(dbmsinfo('unicode_level'), 1), tinyint(dbmsinfo('autocommit_state'))
+X100Q:1593077183/951232901:commit(true)
+X100Q:1593077183/951232903:sys(get_transaction_id)
+EQY:1593077183/952232700:1::15:(2:0):0:1
+QRY:1593077183/953232702?select cap_capability, cap_value from iidbcapabilities 
+EQY:1593077183/953232704:42::15:(2:0):0:1
+QRY:1593077183/954232000?select table_owner, table_name from iitables where table_name = 'ii+odbc'
+EQY:1593077183/955232900:0::15:(2:0):0:1
+COMMIT:1593077183/955232906:
+X100Q:1593077183/955232907:commit(true)
+EQY:1593077183/956261000:-1::15:(2:0):0:0
+QRY:1593077183/958233300?set autocommit on
+X100Q:1593077183/958233301:commit(true)
+AUTOCOMMIT:1593077183/958233302:On
+EQY:1593077183/958233303:-1::15:(2:0):0:0
+QRY:1593077183/959233205?select top 1000001
+    "date",
+    sum(     float8("sales")               ) as "C1",
+    count("sales") as "C2",
+    sum(     float8("sales")               ) as "C3"
+from "skelam"."finance"
+group by "date"
+X100Q:1593077183/960232700:commit(true)
+X100Q:1593077183/960232702:Window (Project (Aggr (MScan ( '_skelamSfinance', [ _t0_c13_date = '_date', _t0_c10_sales = '_sales']  ) [ 'est_card' = '700' ] , [_s1_r1_ = _t0_c13_date] , [_s1_r2_ = sum(_t0_c10_sales), _s1_r3_ = count(_t0_c10_sales)] , 16), [_main_r1_ = _s1_r1_, _main_r2_ = _s1_r2_, _main_r3_ = _s1_r3_, _main_r4_ = _s1_r2_] ), [0, 1000001])
+X100Q:1593077183/962232700:commit(true)
+EQY:1593077183/962232701:16::15:(2:0):0:0
+QRY:1593077316/938552302?set autocommit off
+X100Q:1593077316/938552303:commit(true)
+AUTOCOMMIT:1593077316/939553000:Off
+EQY:1593077316/939553001:-1::15:(2:0):0:0
+NOTE:Tracing stopped by session exit
+SESSION ENDS:1593077316/940553606:(skelam)(financedb)(10242)

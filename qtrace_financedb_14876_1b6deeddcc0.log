@@ -1,0 +1,142 @@
+SESSION BEGINS:1593075635/618410000:(VER=20)(DBID=120035472)(skelam)()()(SVRCL=INGRES)(financedb)(00000000:00000000)(9986)
+NOTE:Tracing started at Thu Jun 25 14:30:35 2020 by session start, nodetail, mintime=0, only-errors? no
+X100CONN:1593075635/625409200:(FFFFFFFFDEEDDCC0,9986):91
+X100Q:1593075635/626412200:sys(getconf, [system, force_partitions])
+X100Q:1593075635/626412201:sys(getconf, [system, force_partition_key])
+QRY:1593075635/628408900?set session with description = 'Director: pid=17920,host="SKELAM-XPS",session user="skelam",connected at:Jun 25,2020 09:00:35.620 GMT'
+X100Q:1593075635/628408901:commit(true)
+EQY:1593075635/628408902:-1::0:(2:0):0:0
+QRY:1593075635/631407600?SELECT count(*) from finance
+X100Q:1593075635/631407601:commit(true)
+X100Q:1593075635/631407603:sys(get_transaction_id)
+X100Q:1593075635/632407400:Project (IISAGGREUSESQ1 = Aggr (MScan ( '_skelamSfinance', [ t0_c0_tid = '__tid__']  ) [ 'est_card' = '700' ] , [] , [_s1_r1_ = count(*)] , 200), [_main_r1_ = _s1_r1_] )
+EQY:1593075635/634416000:1::15:(2:0):0:1
+COMMIT:1593075635/636408302:
+X100Q:1593075635/636408303:commit(true)
+EQY:1593075635/636408304:-1::15:(2:0):0:0
+NOTE:Tracing stopped by session exit
+SESSION ENDS:1593075635/638408402:(skelam)(financedb)(9986)
+SESSION BEGINS:1593075678/930142500:(VER=20)(DBID=120035472)(skelam)()()(SVRCL=INGRES)(financedb)(00000000:00000000)(10050)
+NOTE:Tracing started at Thu Jun 25 14:31:18 2020 by session start, nodetail, mintime=0, only-errors? no
+X100CONN:1593075678/934142100:(FFFFFFFFDEEDDCC0,10050):93
+X100Q:1593075678/935142800:sys(getconf, [system, force_partitions])
+X100Q:1593075678/935142801:sys(getconf, [system, force_partition_key])
+QRY:1593075678/936141800?select dbmsinfo('_version'), dbmsinfo('username'), VARCHAR(dbmsinfo('unicode_level'), 1), tinyint(dbmsinfo('autocommit_state'))
+X100Q:1593075678/936141801:commit(true)
+X100Q:1593075678/937141901:sys(get_transaction_id)
+EQY:1593075678/938141600:1::0:(2:0):0:1
+QRY:1593075678/938141606?select cap_capability, cap_value from iidbcapabilities 
+EQY:1593075678/938141608:42::0:(2:0):0:1
+QRY:1593075678/939141905?select table_owner, table_name from iitables where table_name = 'ii+odbc'
+EQY:1593075678/940141900:0::0:(2:0):0:1
+COMMIT:1593075678/941141700:
+X100Q:1593075678/941141701:commit(true)
+EQY:1593075678/941141702:-1::0:(2:0):0:0
+QRY:1593075678/946145402?set autocommit on
+X100Q:1593075678/946145403:commit(true)
+AUTOCOMMIT:1593075678/947143000:On
+EQY:1593075678/947143001:-1::0:(2:0):0:0
+QRY:1593075678/948142302?SELECT ' ', table_owner, table_name, column_name, column_ingdatatype, column_datatype, column_length, column_length, column_scale, 10, column_nulls, long_remark, column_default_val, column_ingdatatype, 0, column_length, column_sequence, 'YES' FROM (iicolumns c left join iidb_subcomments i on i.subobject_type = 'C' and c.table_name = i.object_name and c.table_owner = i.object_owner and c.column_name = i.subobject_name and i.text_sequence = 1) WHERE c.table_owner = 'skelam' AND c.table_name = 'finance' ORDER BY table_owner, table_name, column_sequence
+X100Q:1593075678/949142100:commit(true)
+X100Q:1593075678/960141700:commit(true)
+EQY:1593075678/960141701:16::15:(2:0):0:0
+QRY:1593075678/995180700?SELECT distinct ' ', iikeys.schema_name, iikeys.table_name, iikeys.column_name, iikeys.key_position, iikeys.constraint_name FROM iikeys, iiconstraints WHERE iiconstraints.constraint_type = 'P'  AND iikeys.constraint_name = iiconstraints.constraint_name  AND iikeys.schema_name = 'skelam' AND iikeys.table_name = 'finance' ORDER BY 2, 3, 5
+X100Q:1593075679/32170800:commit(true)
+X100Q:1593075679/33168300:commit(true)
+EQY:1593075679/33168301:0::46:(2:0):0:0
+QRY:1593075679/35168400?SELECT key_id, ' ', table_owner, table_name, column_name, key_sequence AS KEY_SEQ FROM iialt_columns WHERE key_sequence <> 0 AND table_owner = 'skelam' AND table_name = 'finance' ORDER BY 1, 2, 3, 5
+X100Q:1593075679/35168401:commit(true)
+X100Q:1593075679/36168701:commit(true)
+EQY:1593075679/37179600:0::46:(2:0):0:0
+QRY:1593075679/38176400?SELECT ' ', c.table_owner, c.table_name, c.column_name, c.key_sequence AS KEY_SEQ FROM iitables t, iicolumns c WHERE t.table_name = c.table_name AND t.table_owner = c.table_owner AND t.unique_rule  = 'U' AND c.key_sequence <> 0 AND c.table_owner = 'skelam' AND c.table_name = 'finance' ORDER BY 2, 3, 5
+X100Q:1593075679/41142500:commit(true)
+X100Q:1593075679/42143900:commit(true)
+EQY:1593075679/42143901:0::46:(2:0):0:0
+QRY:1593075679/45144500?SELECT distinct ' ', PKiikeys.schema_name, PKiikeys.table_name, PKiikeys.column_name, ' ', FKiikeys.schema_name, FKiikeys.table_name, FKiikeys.column_name, FKiikeys.key_position, 0, 0, FKiikeys.constraint_name, PKiikeys.constraint_name FROM iikeys  PKiikeys, iiconstraints, iiref_constraints, iikeys  FKiikeys WHERE iiconstraints.constraint_type = 'R' AND iiconstraints.constraint_name = iiref_constraints.ref_constraint_name AND PKiikeys.constraint_name = iiref_constraints.unique_constraint_name AND FKiikeys.constraint_name = iiref_constraints.ref_constraint_name AND PKiikeys.key_position    = FKiikeys.key_position AND FKiikeys.schema_name = 'skelam' AND FKiikeys.table_name = 'finance' ORDER BY 6, 7, 9
+X100Q:1593075679/78146700:commit(true)
+X100Q:1593075679/79142800:commit(true)
+EQY:1593075679/80142700:0::78:(2:0):0:0
+QRY:1593075679/83143802?SELECT distinct ' ', PKiikeys.schema_name, PKiikeys.table_name, PKiikeys.column_name, ' ', FKiikeys.schema_name, FKiikeys.table_name, FKiikeys.column_name, FKiikeys.key_position, 0, 0, FKiikeys.constraint_name, PKiikeys.constraint_name FROM iikeys  PKiikeys, iiconstraints, iiref_constraints, iikeys  FKiikeys WHERE iiconstraints.constraint_type = 'R' AND iiconstraints.constraint_name = iiref_constraints.ref_constraint_name AND PKiikeys.constraint_name = iiref_constraints.unique_constraint_name AND FKiikeys.constraint_name = iiref_constraints.ref_constraint_name AND PKiikeys.key_position    = FKiikeys.key_position AND PKiikeys.schema_name = 'skelam' AND PKiikeys.table_name = 'finance' ORDER BY 2, 3, 9
+X100Q:1593075679/109179600:commit(true)
+X100Q:1593075679/110180301:commit(true)
+EQY:1593075679/111146000:0::109:(2:0):0:0
+QRY:1593075724/24101700?SELECT ' ', table_owner, table_name, column_name, column_ingdatatype, column_datatype, column_length, column_length, column_scale, 10, column_nulls, long_remark, column_default_val, column_ingdatatype, 0, column_length, column_sequence, 'YES' FROM (iicolumns c left join iidb_subcomments i on i.subobject_type = 'C' and c.table_name = i.object_name and c.table_owner = i.object_owner and c.column_name = i.subobject_name and i.text_sequence = 1) WHERE c.table_owner = 'skelam' AND c.table_name = 'finance' ORDER BY table_owner, table_name, column_sequence
+X100Q:1593075724/25103500:commit(true)
+X100Q:1593075724/36101300:commit(true)
+EQY:1593075724/37102800:16::109:(2:0):0:0
+QRY:1593075724/68069400?SELECT distinct ' ', iikeys.schema_name, iikeys.table_name, iikeys.column_name, iikeys.key_position, iikeys.constraint_name FROM iikeys, iiconstraints WHERE iiconstraints.constraint_type = 'P'  AND iikeys.constraint_name = iiconstraints.constraint_name  AND iikeys.schema_name = 'skelam' AND iikeys.table_name = 'finance' ORDER BY 2, 3, 5
+X100Q:1593075724/106103600:commit(true)
+X100Q:1593075724/107068100:commit(true)
+EQY:1593075724/107068101:0::156:(2:0):0:0
+QRY:1593075724/109067800?SELECT key_id, ' ', table_owner, table_name, column_name, key_sequence AS KEY_SEQ FROM iialt_columns WHERE key_sequence <> 0 AND table_owner = 'skelam' AND table_name = 'finance' ORDER BY 1, 2, 3, 5
+X100Q:1593075724/109067801:commit(true)
+X100Q:1593075724/110067701:commit(true)
+EQY:1593075724/111067700:0::156:(2:0):0:0
+QRY:1593075724/112067700?SELECT ' ', c.table_owner, c.table_name, c.column_name, c.key_sequence AS KEY_SEQ FROM iitables t, iicolumns c WHERE t.table_name = c.table_name AND t.table_owner = c.table_owner AND t.unique_rule  = 'U' AND c.key_sequence <> 0 AND c.table_owner = 'skelam' AND c.table_name = 'finance' ORDER BY 2, 3, 5
+X100Q:1593075724/115102500:commit(true)
+X100Q:1593075724/116067800:commit(true)
+EQY:1593075724/116067801:0::171:(2:0):0:0
+QRY:1593075724/119119302?SELECT distinct ' ', PKiikeys.schema_name, PKiikeys.table_name, PKiikeys.column_name, ' ', FKiikeys.schema_name, FKiikeys.table_name, FKiikeys.column_name, FKiikeys.key_position, 0, 0, FKiikeys.constraint_name, PKiikeys.constraint_name FROM iikeys  PKiikeys, iiconstraints, iiref_constraints, iikeys  FKiikeys WHERE iiconstraints.constraint_type = 'R' AND iiconstraints.constraint_name = iiref_constraints.ref_constraint_name AND PKiikeys.constraint_name = iiref_constraints.unique_constraint_name AND FKiikeys.constraint_name = iiref_constraints.ref_constraint_name AND PKiikeys.key_position    = FKiikeys.key_position AND FKiikeys.schema_name = 'skelam' AND FKiikeys.table_name = 'finance' ORDER BY 6, 7, 9
+X100Q:1593075724/147101800:commit(true)
+X100Q:1593075724/148116301:commit(true)
+EQY:1593075724/149069500:0::203:(2:0):0:0
+QRY:1593075724/152067302?SELECT distinct ' ', PKiikeys.schema_name, PKiikeys.table_name, PKiikeys.column_name, ' ', FKiikeys.schema_name, FKiikeys.table_name, FKiikeys.column_name, FKiikeys.key_position, 0, 0, FKiikeys.constraint_name, PKiikeys.constraint_name FROM iikeys  PKiikeys, iiconstraints, iiref_constraints, iikeys  FKiikeys WHERE iiconstraints.constraint_type = 'R' AND iiconstraints.constraint_name = iiref_constraints.ref_constraint_name AND PKiikeys.constraint_name = iiref_constraints.unique_constraint_name AND FKiikeys.constraint_name = iiref_constraints.ref_constraint_name AND PKiikeys.key_position    = FKiikeys.key_position AND PKiikeys.schema_name = 'skelam' AND PKiikeys.table_name = 'finance' ORDER BY 2, 3, 9
+X100Q:1593075724/181070300:commit(true)
+X100Q:1593075724/182068201:commit(true)
+EQY:1593075724/183067700:0::234:(2:0):0:0
+QRY:1593075848/657245300?set autocommit off
+X100Q:1593075848/657245301:commit(true)
+AUTOCOMMIT:1593075848/657245302:Off
+EQY:1593075848/657245303:-1::234:(2:0):0:0
+NOTE:Tracing stopped by session exit
+SESSION ENDS:1593075848/658244806:(skelam)(financedb)(10050)
+SESSION BEGINS:1593077182/700704800:(VER=20)(DBID=120035472)(skelam)()()(SVRCL=INGRES)(financedb)(00000000:00000000)(10178)
+NOTE:Tracing started at Thu Jun 25 14:56:22 2020 by session start, nodetail, mintime=0, only-errors? no
+X100CONN:1593077182/707752400:(FFFFFFFFDEEDDCC0,10178):97
+X100Q:1593077182/708729400:sys(getconf, [system, force_partitions])
+X100Q:1593077182/708729401:sys(getconf, [system, force_partition_key])
+QRY:1593077182/709738600?select dbmsinfo('_version'), dbmsinfo('username'), VARCHAR(dbmsinfo('unicode_level'), 1), tinyint(dbmsinfo('autocommit_state'))
+X100Q:1593077182/710739300:commit(true)
+X100Q:1593077182/710739302:sys(get_transaction_id)
+EQY:1593077182/711739600:1::0:(2:0):0:1
+QRY:1593077182/712704900?select cap_capability, cap_value from iidbcapabilities 
+EQY:1593077182/712704902:42::0:(2:0):0:1
+QRY:1593077182/712704908?select table_owner, table_name from iitables where table_name = 'ii+odbc'
+EQY:1593077182/713738101:0::0:(2:0):0:1
+COMMIT:1593077182/714717405:
+X100Q:1593077182/714717406:commit(true)
+EQY:1593077182/714717407:-1::0:(2:0):0:0
+QRY:1593077182/722707900?set autocommit on
+X100Q:1593077182/722707901:commit(true)
+AUTOCOMMIT:1593077182/722707902:On
+EQY:1593077182/722707903:-1::0:(2:0):0:0
+QRY:1593077182/724703900?SELECT ' ', table_owner, table_name, column_name, column_ingdatatype, column_datatype, column_length, column_length, column_scale, 10, column_nulls, long_remark, column_default_val, column_ingdatatype, 0, column_length, column_sequence, 'YES' FROM (iicolumns c left join iidb_subcomments i on i.subobject_type = 'C' and c.table_name = i.object_name and c.table_owner = i.object_owner and c.column_name = i.subobject_name and i.text_sequence = 1) WHERE c.table_owner = 'skelam' AND c.table_name = 'finance' ORDER BY table_owner, table_name, column_sequence
+X100Q:1593077182/725705800:commit(true)
+X100Q:1593077182/735739600:commit(true)
+EQY:1593077182/735739601:16::15:(2:0):0:0
+QRY:1593077182/766729100?SELECT distinct ' ', iikeys.schema_name, iikeys.table_name, iikeys.column_name, iikeys.key_position, iikeys.constraint_name FROM iikeys, iiconstraints WHERE iiconstraints.constraint_type = 'P'  AND iikeys.constraint_name = iiconstraints.constraint_name  AND iikeys.schema_name = 'skelam' AND iikeys.table_name = 'finance' ORDER BY 2, 3, 5
+X100Q:1593077182/807731100:commit(true)
+X100Q:1593077182/809728300:commit(true)
+EQY:1593077182/809728301:0::62:(2:0):0:0
+QRY:1593077182/811745100?SELECT key_id, ' ', table_owner, table_name, column_name, key_sequence AS KEY_SEQ FROM iialt_columns WHERE key_sequence <> 0 AND table_owner = 'skelam' AND table_name = 'finance' ORDER BY 1, 2, 3, 5
+X100Q:1593077182/811745101:commit(true)
+X100Q:1593077182/812741001:commit(true)
+EQY:1593077182/813739300:0::62:(2:0):0:0
+QRY:1593077182/814705900?SELECT ' ', c.table_owner, c.table_name, c.column_name, c.key_sequence AS KEY_SEQ FROM iitables t, iicolumns c WHERE t.table_name = c.table_name AND t.table_owner = c.table_owner AND t.unique_rule  = 'U' AND c.key_sequence <> 0 AND c.table_owner = 'skelam' AND c.table_name = 'finance' ORDER BY 2, 3, 5
+X100Q:1593077182/817741600:commit(true)
+X100Q:1593077182/818744000:commit(true)
+EQY:1593077182/818744001:0::62:(2:0):0:0
+QRY:1593077182/821706200?SELECT distinct ' ', PKiikeys.schema_name, PKiikeys.table_name, PKiikeys.column_name, ' ', FKiikeys.schema_name, FKiikeys.table_name, FKiikeys.column_name, FKiikeys.key_position, 0, 0, FKiikeys.constraint_name, PKiikeys.constraint_name FROM iikeys  PKiikeys, iiconstraints, iiref_constraints, iikeys  FKiikeys WHERE iiconstraints.constraint_type = 'R' AND iiconstraints.constraint_name = iiref_constraints.ref_constraint_name AND PKiikeys.constraint_name = iiref_constraints.unique_constraint_name AND FKiikeys.constraint_name = iiref_constraints.ref_constraint_name AND PKiikeys.key_position    = FKiikeys.key_position AND FKiikeys.schema_name = 'skelam' AND FKiikeys.table_name = 'finance' ORDER BY 6, 7, 9
+X100Q:1593077182/852709400:commit(true)
+X100Q:1593077182/854703700:commit(true)
+EQY:1593077182/854703701:0::93:(2:0):0:0
+QRY:1593077182/858704900?SELECT distinct ' ', PKiikeys.schema_name, PKiikeys.table_name, PKiikeys.column_name, ' ', FKiikeys.schema_name, FKiikeys.table_name, FKiikeys.column_name, FKiikeys.key_position, 0, 0, FKiikeys.constraint_name, PKiikeys.constraint_name FROM iikeys  PKiikeys, iiconstraints, iiref_constraints, iikeys  FKiikeys WHERE iiconstraints.constraint_type = 'R' AND iiconstraints.constraint_name = iiref_constraints.ref_constraint_name AND PKiikeys.constraint_name = iiref_constraints.unique_constraint_name AND FKiikeys.constraint_name = iiref_constraints.ref_constraint_name AND PKiikeys.key_position    = FKiikeys.key_position AND PKiikeys.schema_name = 'skelam' AND PKiikeys.table_name = 'finance' ORDER BY 2, 3, 9
+X100Q:1593077182/890707600:commit(true)
+X100Q:1593077182/891704801:commit(true)
+EQY:1593077182/892706600:0::125:(2:0):0:0
+QRY:1593077319/170048000?set autocommit off
+X100Q:1593077319/170048001:commit(true)
+AUTOCOMMIT:1593077319/172046800:Off
+EQY:1593077319/172046801:-1::125:(2:0):0:0
+NOTE:Tracing stopped by session exit
+SESSION ENDS:1593077319/176002000:(skelam)(financedb)(10178)

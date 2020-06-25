@@ -1,0 +1,21 @@
+select dbmsinfo('_version'), dbmsinfo('username'), VARCHAR(dbmsinfo('unicode_level'), 1), tinyint(dbmsinfo('autocommit_state'))
+
+SELECT ' ', table_owner, table_name, column_name, column_ingdatatype, column_datatype, column_length, column_length, column_scale, 10, column_nulls, long_remark, column_default_val, column_ingdatatype, 0, column_length, column_sequence, 'YES' FROM (iicolumns c left join iidb_subcomments i on i.subobject_type = 'C' and c.table_name = i.object_name and c.table_owner = i.object_owner and c.column_name = i.subobject_name and i.text_sequence = 1) WHERE c.table_owner = 'skelam' AND c.table_name = 'finance' ORDER BY table_owner, table_name, column_sequence
+
+SELECT distinct ' ', iikeys.schema_name, iikeys.table_name, iikeys.column_name, iikeys.key_position, iikeys.constraint_name FROM iikeys, iiconstraints WHERE iiconstraints.constraint_type = 'P'  AND iikeys.constraint_name = iiconstraints.constraint_name  AND iikeys.schema_name = 'skelam' AND iikeys.table_name = 'finance' ORDER BY 2, 3, 5
+
+SELECT key_id, ' ', table_owner, table_name, column_name, key_sequence AS KEY_SEQ FROM iialt_columns WHERE key_sequence <> 0 AND table_owner = 'skelam' AND table_name = 'finance' ORDER BY 1, 2, 3, 5
+
+select top 1000001
+
+    "date",
+
+    sum(     float8("sales")               ) as "C1",
+
+    count("sales") as "C2",
+
+    sum(     float8("sales")               ) as "C3"
+
+from "skelam"."finance"
+
+group by "date"

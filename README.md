@@ -4,7 +4,7 @@ PowerBI connector for Actian Avalanche, Vector, and Ingres.
 
 Latest version available at [GitHub](https://github.com/ssahu06/PowerBI-Certification).
 
-Minimum recommend version of Tableau is 2.82.5858.641.
+Minimum recommend version of PowerBIDesktop is 2.82.5858.641.
 
 
 ## Installation Instructions

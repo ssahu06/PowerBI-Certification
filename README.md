@@ -2,7 +2,7 @@
 
 PowerBI connector for Actian Avalanche, Vector, and Ingres.
 
-Latest version available at [GitHub](https://github.com/ssahu06/PowerBI-Certification).
+Latest version available at [GitHub](https://github.com/ssahu06/PowerBI-Certification/releases).
 
 Minimum recommend version of PowerBIDesktop is 2.82.5858.641.
 
